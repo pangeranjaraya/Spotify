@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAA MUSIC — Premium Player</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-card">
+            <div class="login-logo">🎵</div>
+            <h1>CAA MUSIC</h1>
+            <p class="login-subtitle">Premium Music Player</p>
+            <button class="btn-primary" id="btn-google">Login with Google</button>
+            <button class="btn-secondary" id="btn-email">Login with Email</button>
+            <div class="login-divider">OR</div>
+            <button class="btn-secondary" id="btn-register">Create Account</button>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="main-app" class="main-app" style="display:none;">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-logo">🎵 CAA MUSIC</div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="home">🏠 Home</a>
+                <a href="#" class="nav-item" data-page="search">🔍 Search</a>
+                <a href="#" class="nav-item" data-page="trending">🔥 Trending</a>
+                <a href="#" class="nav-item" data-page="history">🕐 History</a>
+                <a href="#" class="nav-item" data-page="playlist">📁 Playlist</a>
+                <a href="#" class="nav-item" data-page="liked">❤️ Liked</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <img id="user-avatar" src="" alt="" class="user-avatar">
+                    <div>
+                        <p id="user-name" class="user-name">Loading...</p>
+                        <p id="user-email" class="user-email"></p>
+                    </div>
+                </div>
+                <button class="btn-logout" id="btn-logout">Logout</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="topbar">
+                <button class="menu-toggle" id="menu-toggle">☰</button>
+                <h1 class="page-title" id="page-title">Home</h1>
+                <button class="theme-toggle" id="theme-toggle">🎨</button>
+            </div>
+
+            <!-- Pages -->
+            <div class="page" id="page-home">
+                <div class="hero-section">
+                    <h2>Welcome Back, <span id="hero-name">User</span></h2>
+                    <p>Discover and listen to your favorite music</p>
+                </div>
+                <div class="section">
+                    <h3>Recommended for You</h3>
+                    <div class="song-grid" id="recommended-songs"></div>
+                </div>
+            </div>
+
+            <div class="page" id="page-search" style="display:none;">
+                <div class="search-box-large">
+                    <input type="text" id="search-input" placeholder="Search songs, artists, albums..." onkeypress="if(event.key==='Enter') searchMusic()">
+                    <button class="btn-primary" onclick="searchMusic()">Search</button>
+                </div>
+                <div class="song-list" id="search-results"></div>
+            </div>
+
+            <div class="page" id="page-trending" style="display:none;">
+                <div class="section">
+                    <h3>Trending Now</h3>
+                    <div class="song-grid" id="trending-songs"></div>
+                </div>
+            </div>
+
+            <div class="page" id="page-history" style="display:none;">
+                <div class="section">
+                    <h3>Listening History</h3>
+                    <div class="song-list" id="history-songs"></div>
+                </div>
+            </div>
+
+            <div class="page" id="page-playlist" style="display:none;">
+                <div class="section">
+                    <h3>My Playlists</h3>
+                    <button class="btn-primary" id="btn-create-playlist">+ Create Playlist</button>
+                    <div class="playlist-grid" id="playlist-list"></div>
+                </div>
+            </div>
+
+            <div class="page" id="page-liked" style="display:none;">
+                <div class="section">
+                    <h3>Liked Songs</h3>
+                    <div class="song-list" id="liked-songs"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player Bar -->
+        <div class="player-bar" id="player-bar" style="display:none;">
+            <img id="player-thumbnail" src="" alt="" class="player-thumbnail">
+            <div class="player-info">
+                <h4 id="player-title"></h4>
+                <p id="player-artist"></p>
+            </div>
+            <div class="player-controls">
+                <button class="player-btn" id="btn-prev">⏮</button>
+                <button class="player-btn" id="btn-play">▶️</button>
+                <button class="player-btn" id="btn-next">⏭</button>
+                <button class="player-btn" id="btn-like">❤️</button>
+            </div>
+            <audio id="audio-player" controls></audio>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="js/firebase.js"></script>
+<script type="module" src="js/theme.js"></script>
+<script type="module" src="js/player.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
